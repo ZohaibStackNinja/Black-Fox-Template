@@ -1,0 +1,62 @@
+/* src/index.css */
+
+/* 1. Use the V4 Import */
+@import "tailwindcss";
+
+@theme {
+  /* Define Custom Colors */
+  --color-primary-text: #717174;
+  --color-dark-bg: #121213;
+  --color-link: #c0c0c2;
+  --color-link-hover: #00FFFF;
+  --color-header: #fff;
+  --color-footer-bg: #090909;
+  --color-copyright-text: #6e6965;
+
+  /* Define Custom Font Family (Generates .font-sans) */
+  --font-sans: Tahoma, Geneva, sans-serif;
+  
+  /* Define Custom Line Height (Generates --line-height-base CSS var) */
+  --line-height-base: 1.5em; 
+}
+
+/* Global Styles (using @apply) */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  /* 1. We only @apply utility classes that are guaranteed to exist (bg-*, text-*, font-sans).
+  2. We apply line-height directly using the custom CSS variable. 
+  */
+  font-size: 13px;
+  @apply bg-dark-bg text-primary-text font-sans; /* <- Removed leading-base here */
+  line-height: var(--line-height-base); /* <- Added direct CSS var usage */
+}
+
+/* Base Link Styles */
+a, a:link, a:visited {
+  @apply text-link;
+}
+
+a:hover {
+  @apply text-link-hover no-underline;
+}
+
+p { 
+  @apply m-0 pb-2.5;
+}
+
+/* H-Tags Base Styles */
+h1, h2, h3, h4, h5 { 
+  @apply font-normal text-header; 
+}
+h1 { @apply text-4xl mb-[30px] py-[5px]; }
+h2 { @apply text-[32px] mb-5; }
+h3 { @apply text-xl mb-5; }
+h4 { @apply text-lg mb-2.5; }
+h5 { @apply text-base mb-2.5; }
+h6 { @apply text-sm mb-[5px]; }
+
+/* Global Image Reset */
+img { @apply border-none; }
